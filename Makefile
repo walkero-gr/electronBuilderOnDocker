@@ -1,6 +1,6 @@
 -include env_make
 
-REPO ?= walkero/electronbuildondocker
+REPO ?= walkero/electronbuilderondocker
 TAG ?= base
 VOLUMES ?= -v "${PWD}/code":/opt/code
 WORKSPACE ?= -w /opt/code
