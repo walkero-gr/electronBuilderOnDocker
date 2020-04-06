@@ -4,6 +4,7 @@ LABEL maintainer="Georgios Sokianos <walkero@gmail.com>"
 
 RUN apt-get update && apt-get -y install \
     git \
+    xz-utils \
     binutils;
 
 # Clean up APT when done.
