@@ -1,0 +1,39 @@
+---
+kind: pipeline
+name: build-images
+
+steps:
+- name: build-image-node
+  image: plugins/docker
+  settings:
+    repo: walkero/electronbuilderondocker
+    tags:
+      - "base"
+    cache_from:
+      - walkero/electronbuilderondocker:base
+    dockerfile: Dockerfile
+    username:
+      from_secret: DOCKERHUB_USERNAME
+    password:
+      from_secret: DOCKERHUB_PASSWORD
+- name: build-image-wine
+  image: plugins/docker
+  settings:
+    repo: walkero/electronbuilderondocker
+    tags:
+      - "wine"
+    cache_from:
+      - walkero/electronbuilderondocker:wine
+    dockerfile: Dockerfile.wine
+    username:
+      from_secret: DOCKERHUB_USERNAME
+    password:
+      from_secret: DOCKERHUB_PASSWORD
+
+trigger:
+  branch:
+    include:
+    - master
+  event:
+    include:
+    - push
