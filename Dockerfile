@@ -6,7 +6,6 @@ RUN apt-get update && apt-get -y install \
     binutils \
     bzip2 \
     git \
-    phantomjs \
     xz-utils ;
 
 # Clean up APT when done.
